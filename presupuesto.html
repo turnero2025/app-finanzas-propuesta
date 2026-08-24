@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Presupuesto · App Finanzas Comercios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav">
+    <a class="logo" href="index.html">Desarrollar</a>
+    <a href="proyecto.html">El proyecto</a>
+    <a href="pantallas.html">Pantallas</a>
+    <a href="como-trabajamos.html">Cómo trabajamos</a>
+    <a class="act" href="presupuesto.html">Presupuesto</a>
+  </nav>
+
+  <header class="pagehead">
+    <h1>Presupuesto</h1>
+    <p>El desarrollo es el mismo en todas las opciones. Lo que cambia es <b>quién se ocupa de que siga andando</b> y si va a las tiendas de aplicaciones. Las autogestionadas tienen un precio único mayor porque incluyen la <b>entrega completa</b>: código fuente, cuentas, documentación y capacitación para operarla sin nosotros.</p>
+  </header>
+
+  <section>
+    <h2>Las opciones</h2>
+    <p style="margin-bottom:18px;font-size:14px;color:var(--caja)"><b>Toquen la opción que prefieran</b> — la forma de pago de abajo se ajusta sola.</p>
+
+    <div class="opciones">
+      <div class="op rec sel" role="button" tabindex="0" data-base="2000" data-mensual="100" data-name="App web, administrada">
+        <span class="badge">Recomendada</span>
+        <h3>App web, administrada</h3>
+        <span class="sub">Ustedes asesoran, nosotros la mantenemos</span>
+        <p class="precio">USD 2.000 <small>+ 100/mes</small></p>
+        <ul>
+          <li>Todos los servicios incluidos (base de datos, dominio, hosting) — no pagan nada más</li>
+          <li>Copias de seguridad diarias, actualizaciones, corrección de errores</li>
+          <li>Soporte directo a ustedes dos, respuesta en 48–72 hs hábiles</li>
+          <li>El mensual arranca cuando la app entra en uso real</li>
+          <li>Permanencia mínima del mensual: 10 meses</li>
+        </ul>
+        <p class="nota">El soporte a los comerciantes lo dan ustedes, como hoy — nosotros somos su soporte.</p>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="3000" data-mensual="0" data-name="App web, autogestionada">
+        <h3>App web, autogestionada</h3>
+        <span class="sub">Se las entregamos completa y la operan ustedes</span>
+        <p class="precio">USD 3.000 <small>único pago</small></p>
+        <ul>
+          <li>Entrega total: código, cuentas, documentación y capacitación de manejo</li>
+          <li>Los servicios los pagan directo: ~USD 25–30/mes + dominio anual</li>
+          <li>Sin costo mensual nuestro</li>
+        </ul>
+        <p class="nota">Requiere alguien que se ocupe de lo técnico (copias de seguridad, servicios, errores). Pueden pasarse a la administrada cuando quieran.</p>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="2500" data-mensual="150" data-name="App en las tiendas, administrada">
+        <h3>App en las tiendas, administrada</h3>
+        <span class="sub">Play Store y App Store, mantenida por nosotros</span>
+        <p class="precio">USD 2.500 <small>+ 150/mes</small></p>
+        <ul>
+          <li>Todo lo de la web administrada</li>
+          <li>Publicada en Google Play y App Store, descargable como cualquier app</li>
+          <li>Las cuentas de las tiendas y sus costos van incluidos en el mensual</li>
+          <li>Una actualización de tiendas por trimestre incluida</li>
+          <li>Permanencia mínima del mensual: 7 meses</li>
+        </ul>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="3500" data-mensual="0" data-name="App en las tiendas, autogestionada">
+        <h3>App en las tiendas, autogestionada</h3>
+        <span class="sub">Publicada y entregada, la operan ustedes</span>
+        <p class="precio">USD 3.500 <small>único pago</small></p>
+        <ul>
+          <li>Todo lo de la web autogestionada</li>
+          <li>Publicada en sus propias cuentas de tienda</li>
+          <li>Costos de tiendas a su cargo: USD 25 una vez (Google) + USD 99/año (Apple)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="aviso"><p><b>¿Por qué recomendamos la web administrada?</b> Porque a sus clientes se la instalan ustedes en la primera sesión (no necesitan las tiendas para eso), porque no tienen que ocuparse de nada técnico, y porque es la opción más barata de arrancar. Pasar a las tiendas después es un agregado, no un rehacer.</p></div>
+  </section>
+
+  <section>
+    <h2>Forma de pago</h2>
+    <p style="margin-bottom:14px">Opción elegida: <b id="pago-name" style="color:var(--ink)">App web, administrada</b> · <span class="mono" id="pago-detalle">USD 2.000 + USD 100 por mes</span></p>
+    <div class="pagos">
+      <div class="pago"><div class="pct">40%</div><div class="cuando">al iniciar<br><span class="mono" id="pg1">USD 800</span></div></div>
+      <div class="pago"><div class="pct">40%</div><div class="cuando">en la primera entrega<br><span class="mono" id="pg2">USD 800</span></div></div>
+      <div class="pago"><div class="pct">20%</div><div class="cuando">al finalizar<br><span class="mono" id="pg3">USD 400</span></div></div>
+    </div>
+    <ul class="plain" style="margin-top:16px;max-width:66ch">
+      <li>En dólares, por transferencia bancaria</li>
+      <li><b>"Finalizado" significa algo concreto:</b> la app da los mismos números que tu Excel con los mismos datos, y todas las pantallas acordadas funcionan. Ni antes ni después.</li>
+      <li><b>Garantía de 60 días</b> desde la entrega final: cualquier error de lo entregado se corrige sin cargo, en todas las opciones</li>
+    </ul>
+  </section>
+
+  <script>
+  (function(){
+    var ops = document.querySelectorAll('.op');
+    if (!ops.length) return;
+    function usd(n){ return 'USD ' + n.toLocaleString('es-AR'); }
+    function apply(el){
+      ops.forEach(function(o){ o.classList.remove('sel'); });
+      el.classList.add('sel');
+      var base = parseInt(el.dataset.base, 10);
+      var mensual = parseInt(el.dataset.mensual, 10);
+      document.getElementById('pg1').textContent = usd(base * 0.4);
+      document.getElementById('pg2').textContent = usd(base * 0.4);
+      document.getElementById('pg3').textContent = usd(base * 0.2);
+      document.getElementById('pago-name').textContent = el.dataset.name;
+      document.getElementById('pago-detalle').textContent = usd(base) + (mensual ? ' + ' + usd(mensual) + ' por mes' : ' · pago único, sin mensual');
+    }
+    ops.forEach(function(o){
+      o.addEventListener('click', function(){ apply(o); });
+      o.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apply(o); }
+      });
+    });
+  })();
+  </script>
+
+  <footer class="site">
+    <span>José Brizuela · Agustín Soleti</span>
+    <span>agosto 2026 · propuesta válida por 30 días</span>
+  </footer>
+
+</div>
+</body>
+</html>

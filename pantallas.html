@@ -174,9 +174,23 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
 .cambios b{color:var(--ink);font-weight:500}
 
 @media (max-width:560px){.wrap{padding:36px 16px 56px}.masthead h1{font-size:26px}.grid{gap:32px}}
+
+  .topnav{display:flex;gap:18px;align-items:center;padding:16px 24px;border-bottom:1px solid var(--rule);flex-wrap:wrap;max-width:1240px;margin:0 auto}
+  .topnav .logo{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1D7A4C;text-decoration:none;font-weight:600;margin-right:auto}
+  .topnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding-bottom:2px}
+  .topnav a:hover{color:var(--ink)}
+  .topnav a.act{color:var(--ink);font-weight:600;border-bottom:2px solid #1D7A4C}
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <a class="logo" href="index.html">Desarrollar</a>
+  <a href="proyecto.html">El proyecto</a>
+  <a class="act" href="pantallas.html">Pantallas</a>
+  <a href="como-trabajamos.html">Cómo trabajamos</a>
+  <a href="presupuesto.html">Presupuesto</a>
+</nav>
+
 
 
 <div class="wrap">
