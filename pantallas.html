@@ -212,7 +212,7 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
 
     <div class="item">
       <div class="phone">
-        <div class="bar"><span>9:41</span><span>Paso 1 de 3</span></div>
+        <div class="bar"><span>9:41</span><span>Paso 1 de 2</span></div>
         <div class="top"><div><strong>¿Cuánto necesitás vender?</strong><span>Lo completamos juntos</span></div></div>
         <div class="card">
           <p class="card-t">Lo que tenés que cubrir todos los meses</p>
@@ -235,7 +235,7 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
       <div class="caption">
         <span class="tag t-par">Está en la planilla</span>
         <h3>Diagnóstico inicial</h3>
-        <p>Se completa una sola vez, en la primera sesión, en tres pasos: cuánto cubrir, métodos de pago y comisiones, y la lista de precios inicial. Después queda guardado y alimenta el resto de la app en lugar de quedar en un archivo aparte que nadie vuelve a abrir.</p>
+        <p>Se completa una sola vez, en la primera sesión, en dos pasos: cuánto cubrir, y métodos de pago y comisiones. Después queda guardado y alimenta el resto de la app en lugar de quedar en un archivo aparte que nadie vuelve a abrir.</p>
         <span class="origen">Reemplaza <b>PUNTO_DE_EQUILIBRIO.xlsx</b> · celdas I11 a I18</span>
       </div>
     </div>
@@ -358,35 +358,6 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
         <h3>Cuánto gané</h3>
         <p>La misma cuenta del Excel, en el mismo orden, celda por celda. Lo que se suma es la cuenta puente del final: adónde fue cada peso de diferencia entre la ganancia y la caja. Es la conversación semanal de la asesoría, hecha pantalla.</p>
         <span class="origen">Reemplaza <b>VENTAS</b> · bloque M14:N25, con la celda N25 descompuesta</span>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="phone">
-        <div class="bar"><span>9:41</span><span>Lista de precios</span></div>
-        <div class="top"><div><strong>Tus precios</strong><span>4 productos cargados</span></div></div>
-        <div class="hero">
-          <p class="lbl">Tu margen promedio</p>
-          <p class="big">30%</p>
-          <p class="sub">De cada $100 vendidos, $30 son tuyos</p>
-        </div>
-        <div class="card">
-          <div class="list-row"><div><p class="name" style="margin:0">Jamón cocido · kg</p><p class="meta" style="margin:0">Costo $8.400 → vendés a $12.000</p></div><span class="flag f-ok">30%</span></div>
-          <div class="list-row"><div><p class="name" style="margin:0">Queso cremoso · kg</p><p class="meta" style="margin:0">Costo $6.000 → vendés a $8.000</p></div><span class="flag f-warn">25%</span></div>
-          <div class="list-row"><div><p class="name" style="margin:0">Salame milán · kg</p><p class="meta" style="margin:0">Costo $5.850 → vendés a $9.000</p></div><span class="flag f-ok">35%</span></div>
-          <div class="list-row"><div><p class="name" style="margin:0">Coca-Cola 2,25 L</p><p class="meta" style="margin:0">Costo $2.100 → vendés a $3.000</p></div><span class="flag f-ok">30%</span></div>
-        </div>
-        <div class="aviso">
-          <p><b>Marcar no es ganar.</b></p>
-          <p>Al jamón lo marcás 43% arriba del costo, pero tu margen es 30%. La diferencia es la trampa en la que cae casi todo el mundo.</p>
-        </div>
-        <a class="btn ghost">Agregar un producto</a>
-      </div>
-      <div class="caption">
-        <span class="tag t-par">Está en la planilla</span>
-        <h3>Lista de precios</h3>
-        <p>Ganancia y margen por producto, calculados solos. La distinción entre marca y margen —la lección que hoy hay que dar por teléfono— queda escrita al lado del número, con los productos del propio comercio.</p>
-        <span class="origen">Reemplaza <b>LISTA DE PRECIOS</b> · columnas C:F y márgen promedio I3</span>
       </div>
     </div>
 
@@ -754,7 +725,7 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
     <h3>Cambios de la v2</h3>
     <ul>
       <li><b>Corregida la explicación ganancia/caja.</b> La v1 atribuía toda la diferencia a "mercadería en la góndola"; con los números del ejemplo, el driver principal eran los retiros del dueño. Ahora la pantalla muestra la cuenta puente completa: ganancia − mercadería sin vender − retiros + caja inicial = lo que hay hoy.</li>
-      <li><b>Sumadas cuatro pantallas que faltaban del alcance:</b> lista de precios (con la lección marca vs. margen), proyección, configuración por comercio y cobranzas.</li>
+      <li><b>Sumadas cuatro pantallas que faltaban del alcance:</b> proyección, configuración por comercio y cobranzas.</li>
       <li><b>Sumado el módulo de empleados</b> a la fase 3.</li>
       <li><b>El panel de la asesoría pasó a formato web</b> — el comercio usa el celular, ustedes la compu.</li>
       <li><b>Orden de fases consistente:</b> el aviso de presupuesto semanal ya no aparece en pantallas de fase 1; llega con el módulo de proveedores.</li>
