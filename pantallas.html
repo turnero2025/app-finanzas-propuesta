@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pantallas App Finanzas Comercios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#E9EBE6;
+  --paper:#FFFFFF;
+  --ink:#1C1E1A;
+  --ink-2:#5A5E55;
+  --ink-3:#8B8F85;
+  --rule:#D5D8D0;
+  --prov:#0B5394;
+  --gasto:#990000;
+  --fijo:#B07D00;
+  --personal:#B45F06;
+  --caja:#1D7A4C;
+  --caja-bg:#E4F0E8;
+  --alerta-bg:#FBF0DA;
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:56px 24px 80px}
+
+.masthead{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:12px}
+.masthead .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.masthead h1{font-size:34px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px;max-width:22ch;line-height:1.15}
+.masthead p{margin:0;color:var(--ink-2);max-width:62ch}
+.disclaimer{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:24px;line-height:1.6}
+.disclaimer b{color:var(--ink);font-weight:500}
+
+.fase{margin-top:64px}
+.fase-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:32px}
+.fase-num{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:3px 9px}
+.fase-head h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0}
+.fase-head .nota{font-size:14px;color:var(--ink-2);margin:0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 32px}
+.item{display:flex;flex-direction:column;gap:16px}
+
+.caption h3{font-size:16px;font-weight:600;margin:0 0 6px}
+.caption p{margin:0 0 10px;font-size:14px;color:var(--ink-2)}
+.origen{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:8px;display:block}
+.origen b{color:var(--ink-2);font-weight:500}
+
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;margin-bottom:8px}
+.t-par{background:#E4E9F0;color:var(--prov)}
+.t-add{background:var(--alerta-bg);color:#6B4A00}
+
+.agregados{margin-top:44px;background:var(--paper);border:1px solid var(--rule);padding:26px 28px}
+.agregados h3{font-size:17px;font-weight:600;margin:0 0 6px}
+.agregados .intro{margin:0 0 20px;font-size:14px;color:var(--ink-2);max-width:72ch}
+.agregados dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.agregados dt{font-size:14px;font-weight:600;margin-bottom:5px}
+.agregados dd{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.agregados dd .est{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:7px;border-top:1px solid var(--rule);padding-top:7px}
+
+.phone{width:100%;max-width:322px;background:var(--paper);border:1px solid var(--rule);border-radius:26px;padding:14px 13px 16px}
+.bar{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);padding:0 4px 10px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding:0 2px}
+.top strong{display:block;font-size:15px;font-weight:600}
+.top span{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+
+.card{border:1px solid var(--rule);border-radius:14px;padding:13px;margin-bottom:10px}
+.card:last-child{margin-bottom:0}
+.card-t{font-size:13px;font-weight:600;margin:0 0 9px;display:flex;justify-content:space-between;align-items:baseline}
+.card-t em{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--ink-3);font-weight:400}
+
+.hero{background:var(--caja-bg);border-radius:14px;padding:15px;margin-bottom:10px}
+.hero .lbl{font-size:12.5px;color:var(--caja);margin:0 0 3px}
+.hero .big{font-family:var(--mono);font-size:29px;font-weight:500;color:var(--caja);margin:0;letter-spacing:-.02em}
+.hero .sub{font-family:var(--mono);font-size:11.5px;color:var(--caja);margin:5px 0 0}
+
+.aviso{background:var(--alerta-bg);border-radius:14px;padding:13px;margin-bottom:10px}
+.aviso p{margin:0;font-size:12.5px;color:#6B4A00;line-height:1.55}
+.aviso p+p{margin-top:5px}
+.aviso b{font-weight:600}
+.aviso .mini{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:#6B4A00;padding:3px 0;border-top:1px dashed #E3CD9C}
+.aviso .mini:first-of-type{margin-top:7px}
+.aviso .mini.total{border-top:1px solid #6B4A00;font-weight:500}
+
+.row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid var(--rule);font-size:13px}
+.row:first-of-type{border-top:0}
+.row .k{color:var(--ink-2)}
+.row .v{font-family:var(--mono);font-size:13px}
+.row .v .ideal{color:var(--ink-3)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.d-prov{background:var(--prov)}.d-fijo{background:var(--fijo)}.d-gasto{background:var(--gasto)}.d-pers{background:var(--personal)}
+.ok{color:var(--caja)}.warn{color:#B07D00}.bad{color:var(--gasto)}
+
+.meter{height:7px;background:#EDEFEA;border-radius:4px;overflow:hidden;margin:9px 0}
+.meter i{display:block;height:100%;background:var(--caja)}
+.meter.mini{height:5px;margin:5px 0 0}
+.meter.mini i{background:var(--prov)}
+
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:20px;background:#EDEFEA;color:var(--ink-2)}
+.pill.on{background:var(--caja);color:#fff}
+
+.field{border:1px solid var(--rule);border-radius:11px;padding:9px 11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.field label{font-size:12.5px;color:var(--ink-2)}
+.field .amt{font-family:var(--mono);font-size:15px}
+.field .amt.ph{color:var(--ink-3)}
+
+.btn{display:block;text-align:center;border-radius:11px;padding:11px;font-size:13.5px;font-weight:500;margin-top:10px}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.ghost{border:1px solid var(--rule);color:var(--ink)}
+
+.tabbar{display:flex;justify-content:space-between;border-top:1px solid var(--rule);margin-top:12px;padding:10px 12px 0}
+.tabbar span{font-size:11px;color:var(--ink-3)}
+.tabbar span.sel{color:var(--ink);font-weight:600}
+
+.list-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--rule)}
+.list-row:first-child{border-top:0}
+.list-row .name{font-size:13px;font-weight:500}
+.list-row .meta{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.flag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.f-bad{background:#FBE9E9;color:var(--gasto)}
+.f-warn{background:var(--alerta-bg);color:#6B4A00}
+.f-ok{background:var(--caja-bg);color:var(--caja)}
+
+/* panel web de la asesoría */
+.webitem{grid-column:1/-1;display:flex;flex-direction:column;gap:16px}
+.browser{background:var(--paper);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.browser-bar{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--rule);padding:10px 14px;background:#F4F5F2}
+.browser-bar i{width:9px;height:9px;border-radius:50%;background:var(--rule);display:inline-block}
+.browser-bar span{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:8px}
+.browser-body{display:grid;grid-template-columns:1.2fr 1fr;gap:0}
+.browser-body>div{padding:20px 22px}
+.browser-body>div+div{border-left:1px solid var(--rule)}
+.browser h4{font-size:14px;font-weight:600;margin:0 0 4px}
+.browser .sub-h{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin:0 0 14px}
+.cfg{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid var(--rule);font-size:13px}
+.cfg:first-of-type{border-top:0}
+.cfg .k{color:var(--ink-2)}
+.cfg .v{font-family:var(--mono);font-size:12.5px;border:1px solid var(--rule);border-radius:7px;padding:2px 9px}
+.cfg-t{font-size:12px;font-weight:600;margin:16px 0 4px;color:var(--ink)}
+.cfg-t:first-child{margin-top:0}
+@media (max-width:760px){.browser-body{grid-template-columns:1fr}.browser-body>div+div{border-left:0;border-top:1px solid var(--rule)}}
+
+.tail{margin-top:72px;border-top:1px solid var(--rule);padding-top:24px;color:var(--ink-2);font-size:14px}
+.tail h2{font-size:18px;font-weight:600;color:var(--ink);margin:0 0 10px}
+.tail ol{margin:0;padding-left:20px}
+.tail li{margin-bottom:8px;max-width:70ch}
+.tail b{color:var(--ink);font-weight:600}
+
+.cambios{margin-top:40px;background:var(--paper);border:1px solid var(--rule);padding:20px 24px;font-size:13.5px;color:var(--ink-2)}
+.cambios h3{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 10px}
+.cambios ul{margin:0;padding-left:18px}
+.cambios li{margin-bottom:5px;max-width:78ch}
+.cambios b{color:var(--ink);font-weight:500}
+
+@media (max-width:560px){.wrap{padding:36px 16px 56px}.masthead h1{font-size:26px}.grid{gap:32px}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Propuesta de pantallas · v2 · agosto 2026</p>
+  <h1>Una app que ordena la caja de comercios de barrio</h1>
+  <p>El piso que pidieron es claro: <b>lo que ya hace el Excel, sin sacar nada</b>. La fase 1 es exactamente eso. Cada pantalla dice de qué parte de la planilla sale, para que se pueda verificar una por una. Los números de ejemplo salen del modelo de la propia planilla y cierran entre sí, centavo por centavo. Los colores también son los del Excel: azul proveedores, amarillo costos fijos, rojo gastos, naranja personales, verde caja.</p>
+  <p class="disclaimer">Esto no es el diseño final. Está hecho para chequear si entendimos bien el método de trabajo, y para que lo corrijan. Todo lo que está dibujado acá se puede mover. <b>v2:</b> corregida la explicación de la diferencia ganancia/caja, y sumadas las pantallas que faltaban del alcance: lista de precios, proyección, configuración por comercio, cobranzas y empleados.</p>
+</header>
+
+<section class="fase">
+  <div class="fase-head">
+    <span class="fase-num">Fase 1</span>
+    <h2>Todo lo que hoy hace el Excel</h2>
+    <p class="nota">Las dos planillas completas. Solo queda afuera RANKING VENTAS, que ya estaba abandonada.</p>
+  </div>
+  <div class="grid">
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Paso 1 de 3</span></div>
+        <div class="top"><div><strong>¿Cuánto necesitás vender?</strong><span>Lo completamos juntos</span></div></div>
+        <div class="card">
+          <p class="card-t">Lo que tenés que cubrir todos los meses</p>
+          <div class="row"><span class="k"><i class="dot d-fijo"></i>Costos fijos</span><span class="v">$1.200.000</span></div>
+          <div class="row"><span class="k"><i class="dot d-pers"></i>Tu sueldo y gastos</span><span class="v">$900.000</span></div>
+          <div class="row"><span class="k" style="font-weight:600;color:var(--ink)">Total</span><span class="v" style="font-weight:500">$2.100.000</span></div>
+        </div>
+        <div class="card">
+          <p class="card-t">Tu margen de ganancia</p>
+          <div class="field"><label>De cada $100 que vendés,<br>¿cuánto te queda?</label><span class="amt">30%</span></div>
+          <p style="margin:0;font-size:11.5px;color:var(--ink-3);line-height:1.5">Sale de tu producto de referencia. Lo elegimos juntos en la primera sesión.</p>
+        </div>
+        <div class="hero">
+          <p class="lbl">Tu piso para no perder plata</p>
+          <p class="big">$7.000.000</p>
+          <p class="sub">Son $269.000 por día, 26 días abiertos</p>
+        </div>
+        <a class="btn solid">Siguiente: cómo cobrás</a>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Diagnóstico inicial</h3>
+        <p>Se completa una sola vez, en la primera sesión, en tres pasos: cuánto cubrir, métodos de pago y comisiones, y la lista de precios inicial. Después queda guardado y alimenta el resto de la app en lugar de quedar en un archivo aparte que nadie vuelve a abrir.</p>
+        <span class="origen">Reemplaza <b>PUNTO_DE_EQUILIBRIO.xlsx</b> · celdas I11 a I18</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Agosto · día 21</span></div>
+        <div class="top"><div><strong>Fiambrería Don José</strong><span>Actualizado hace 2 horas</span></div></div>
+        <div class="hero">
+          <p class="lbl">Plata disponible hoy</p>
+          <p class="big">$580.000</p>
+          <p class="sub">Arrancaste con $500.000 · entró $9.680.000 · salió $9.600.000</p>
+        </div>
+        <div class="card">
+          <p class="card-t">Tu piso para no perder <em>$7.000.000</em></p>
+          <div class="meter"><i style="width:100%"></i></div>
+          <p style="margin:0;font-size:12.5px" class="ok">Vendiste $9.680.000. Vas 38% arriba.</p>
+        </div>
+        <div class="card">
+          <p class="card-t">En qué se te fue la plata <em>real / ideal</em></p>
+          <div class="row"><span class="k"><i class="dot d-prov"></i>Proveedores</span><span class="v"><span class="warn">70%</span><span class="ideal"> / 65%</span></span></div>
+          <div class="row"><span class="k"><i class="dot d-fijo"></i>Costos fijos</span><span class="v">12%<span class="ideal"> / 12%</span></span></div>
+          <div class="row"><span class="k"><i class="dot d-gasto"></i>Gastos del negocio</span><span class="v">4%<span class="ideal"> / 5%</span></span></div>
+          <div class="row"><span class="k"><i class="dot d-pers"></i>Tu sueldo y gastos</span><span class="v"><span class="bad">9%</span><span class="ideal"> / 5%</span></span></div>
+        </div>
+        <div class="aviso">
+          <p><b>Ganaste $1.304.000, pero en caja tenés $580.000.</b></p>
+          <p>$324.000 están en mercadería sin vender y $900.000 te los retiraste vos. Ver la cuenta completa</p>
+        </div>
+        <div class="tabbar"><span class="sel">Inicio</span><span>Cargar</span><span>Cuánto gané</span><span>Más</span></div>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span> <span class="tag t-add">Con dos agregados</span>
+        <h3>Inicio</h3>
+        <p>El flujo de caja y la liquidez son los mismos del Excel. Lo que se suma es la columna «ideal», que hoy es una celda vacía en la planilla, y la comparación contra el piso, que hoy vive en el otro archivo.</p>
+        <span class="origen">Reemplaza <b>VENTAS</b> · bloque H14:K22, con la celda K17 «IDEAL» completada</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Cerrar</span></div>
+        <div class="top"><div><strong>Ventas de hoy</strong><span>Jueves 21 de agosto</span></div></div>
+        <div class="field"><label>Efectivo</label><span class="amt">$182.400</span></div>
+        <div class="field"><label>Transferencia</label><span class="amt">$96.000</span></div>
+        <div class="field"><label>QR</label><span class="amt">$54.300</span></div>
+        <div class="field"><label>Débito</label><span class="amt">$41.200</span></div>
+        <div class="field"><label>Crédito</label><span class="amt ph">$0</span></div>
+        <div class="card" style="margin-top:12px">
+          <div class="row"><span class="k">Total del día</span><span class="v">$373.900</span></div>
+          <div class="row"><span class="k">Comisiones</span><span class="v">−$3.951</span></div>
+          <div class="row"><span class="k" style="font-weight:600;color:var(--ink)">Te queda</span><span class="v ok" style="font-weight:500">$369.949</span></div>
+        </div>
+        <a class="btn solid">Guardar</a>
+        <p style="margin:10px 2px 0;font-size:11.5px;color:var(--ink-3);text-align:center">Ayer cargaste $412.800</p>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Cargar las ventas del día</h3>
+        <p>Cinco minutos por día, que es lo que ya hacen hoy pasando el cuadernito a la planilla. Las comisiones se descuentan solas y quedan a la vista, que es lo que nadie mira.</p>
+        <span class="origen">Reemplaza <b>VENTAS</b> · columnas A:F y comisiones I4:K10</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Cerrar</span></div>
+        <div class="top"><div><strong>Cargar una salida</strong><span>Jueves 21 de agosto</span></div></div>
+        <div class="card">
+          <p class="card-t">¿Qué pagaste?</p>
+          <div class="row"><span class="k"><i class="dot d-prov"></i>Un proveedor</span><span class="pill on">Elegido</span></div>
+          <div class="row"><span class="k"><i class="dot d-fijo"></i>Un costo fijo</span><span class="pill">Alquiler, luz, gas</span></div>
+          <div class="row"><span class="k"><i class="dot d-gasto"></i>Un gasto del negocio</span><span class="pill">Bolsas, arreglos</span></div>
+          <div class="row"><span class="k"><i class="dot d-pers"></i>Algo tuyo</span><span class="pill">No es del negocio</span></div>
+        </div>
+        <div class="field"><label>Proveedor</label><span class="amt" style="font-size:13px">Fiambres SRL</span></div>
+        <div class="field"><label>Monto</label><span class="amt">$186.000</span></div>
+        <div class="field"><label>Cómo pagaste</label><span class="amt" style="font-size:13px">Transferencia</span></div>
+        <div class="aviso" style="margin-top:12px">
+          <p>Con este pago llevás <b>$7.100.000</b> en proveedores este mes. El 70% de lo que entró.</p>
+        </div>
+        <a class="btn solid">Guardar</a>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Cargar un gasto</h3>
+        <p>Una sola pantalla para las cuatro hojas de egresos. Separar lo personal de lo del negocio deja de ser un acto de disciplina y pasa a ser una pregunta obligatoria del formulario. Si es un costo fijo, aparece el campo «vencimiento», igual que en la planilla.</p>
+        <span class="origen">Reemplaza <b>PROVEEDORES</b>, <b>GASTOS NEGOCIO</b>, <b>COSTOS FIJOS</b> y <b>SUELDO GASTOS PERSONALES</b></span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Agosto</span></div>
+        <div class="top"><div><strong>¿Cuánto gané?</strong><span>Cerrado al 21 de agosto</span></div></div>
+        <div class="card">
+          <div class="row"><span class="k">Vendiste</span><span class="v">$9.680.000</span></div>
+          <div class="row"><span class="k">Te costó la mercadería</span><span class="v">−$6.776.000</span></div>
+          <div class="row"><span class="k" style="font-weight:600;color:var(--ink)">Ganancia bruta</span><span class="v" style="font-weight:500">$2.904.000</span></div>
+          <p style="margin:9px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.5">De cada $100 que vendés te quedan $30 antes de pagar los gastos.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="k">Menos costos fijos</span><span class="v">−$1.200.000</span></div>
+          <div class="row"><span class="k">Menos gastos del negocio</span><span class="v">−$400.000</span></div>
+          <div class="row"><span class="k" style="font-weight:600;color:var(--ink)">Ganancia del mes</span><span class="v ok" style="font-weight:500">$1.304.000</span></div>
+          <div class="meter mini"><i style="width:13.5%"></i></div>
+          <p style="margin:6px 0 0;font-size:11.5px;color:var(--ink-3)">Tu negocio rinde 13,5%</p>
+        </div>
+        <div class="aviso">
+          <p><b>¿Y por qué no tengo esa plata?</b></p>
+          <div class="mini"><span>Tu ganancia del mes</span><span>+$1.304.000</span></div>
+          <div class="mini"><span>Mercadería pagada, sin vender</span><span>−$324.000</span></div>
+          <div class="mini"><span>Lo que retiraste para vos</span><span>−$900.000</span></div>
+          <div class="mini"><span>Caja con la que arrancaste</span><span>+$500.000</span></div>
+          <div class="mini total"><span>Lo que tenés hoy</span><span>$580.000</span></div>
+        </div>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span> <span class="tag t-add">Con un agregado</span>
+        <h3>Cuánto gané</h3>
+        <p>La misma cuenta del Excel, en el mismo orden, celda por celda. Lo que se suma es la cuenta puente del final: adónde fue cada peso de diferencia entre la ganancia y la caja. Es la conversación semanal de la asesoría, hecha pantalla.</p>
+        <span class="origen">Reemplaza <b>VENTAS</b> · bloque M14:N25, con la celda N25 descompuesta</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Lista de precios</span></div>
+        <div class="top"><div><strong>Tus precios</strong><span>4 productos cargados</span></div></div>
+        <div class="hero">
+          <p class="lbl">Tu margen promedio</p>
+          <p class="big">30%</p>
+          <p class="sub">De cada $100 vendidos, $30 son tuyos</p>
+        </div>
+        <div class="card">
+          <div class="list-row"><div><p class="name" style="margin:0">Jamón cocido · kg</p><p class="meta" style="margin:0">Costo $8.400 → vendés a $12.000</p></div><span class="flag f-ok">30%</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Queso cremoso · kg</p><p class="meta" style="margin:0">Costo $6.000 → vendés a $8.000</p></div><span class="flag f-warn">25%</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Salame milán · kg</p><p class="meta" style="margin:0">Costo $5.850 → vendés a $9.000</p></div><span class="flag f-ok">35%</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Coca-Cola 2,25 L</p><p class="meta" style="margin:0">Costo $2.100 → vendés a $3.000</p></div><span class="flag f-ok">30%</span></div>
+        </div>
+        <div class="aviso">
+          <p><b>Marcar no es ganar.</b></p>
+          <p>Al jamón lo marcás 43% arriba del costo, pero tu margen es 30%. La diferencia es la trampa en la que cae casi todo el mundo.</p>
+        </div>
+        <a class="btn ghost">Agregar un producto</a>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Lista de precios</h3>
+        <p>Ganancia y margen por producto, calculados solos. La distinción entre marca y margen —la lección que hoy hay que dar por teléfono— queda escrita al lado del número, con los productos del propio comercio.</p>
+        <span class="origen">Reemplaza <b>LISTA DE PRECIOS</b> · columnas C:F y márgen promedio I3</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Proyección</span></div>
+        <div class="top"><div><strong>¿Y si vendés más?</strong><span>Probá un escenario</span></div></div>
+        <div class="field"><label>Si el mes que viene vendés</label><span class="amt">$12.000.000</span></div>
+        <div class="card">
+          <div class="row"><span class="k">Te costaría la mercadería</span><span class="v">−$8.400.000</span></div>
+          <div class="row"><span class="k">Ganancia bruta</span><span class="v">$3.600.000</span></div>
+          <div class="row"><span class="k">Menos lo que tenés que cubrir</span><span class="v">−$2.100.000</span></div>
+          <div class="row"><span class="k" style="font-weight:600;color:var(--ink)">Te quedarían</span><span class="v ok" style="font-weight:500">$1.500.000</span></div>
+        </div>
+        <div class="card">
+          <p class="card-t">Para llegar</p>
+          <p style="margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.55">Son $462.000 por día, 26 días abiertos. Este mes venís vendiendo $461.000 por día. Está al alcance.</p>
+        </div>
+        <a class="btn ghost">Probar otro número</a>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Proyección</h3>
+        <p>El bloque de proyección del archivo de diagnóstico, convertido en un «¿y si...?» que se puede jugar. Usa el margen y los costos ya cargados: acá no se tipea nada dos veces.</p>
+        <span class="origen">Reemplaza <b>PUNTO_DE_EQUILIBRIO.xlsx</b> · bloque PROYECCIÓN K3:M10, con el total a cubrir referenciado</span>
+      </div>
+    </div>
+
+    <div class="webitem">
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span>asesoria.app — panel de Luisina y Fer</span></div>
+        <div class="browser-body">
+          <div>
+            <h4>Tus comercios</h4>
+            <p class="sub-h">12 activos · 88 terminados</p>
+            <p class="card-t" style="margin-top:4px">Necesitan que los mires <em>4</em></p>
+            <div class="list-row"><div><p class="name" style="margin:0">Almacén La Esquina</p><p class="meta" style="margin:0">Proveedores 84% · ideal 65%</p></div><span class="flag f-bad">Se pasó</span></div>
+            <div class="list-row"><div><p class="name" style="margin:0">Pollería Rivadavia</p><p class="meta" style="margin:0">Sin cargar hace 6 días</p></div><span class="flag f-bad">Frenado</span></div>
+            <div class="list-row"><div><p class="name" style="margin:0">Fiambrería Don José</p><p class="meta" style="margin:0">Retiros personales 9% · ideal 5%</p></div><span class="flag f-warn">Ojo</span></div>
+            <div class="list-row"><div><p class="name" style="margin:0">Kiosco 24hs</p><p class="meta" style="margin:0">Va 12% abajo del piso</p></div><span class="flag f-warn">Ojo</span></div>
+            <p class="card-t" style="margin-top:16px">Van bien <em>8</em></p>
+            <div class="list-row"><div><p class="name" style="margin:0">Verdulería Central</p><p class="meta" style="margin:0">Caja $1.840.000</p></div><span class="flag f-ok">Al día</span></div>
+            <div class="list-row"><div><p class="name" style="margin:0">Panadería San Martín</p><p class="meta" style="margin:0">Caja $2.100.000</p></div><span class="flag f-ok">Al día</span></div>
+          </div>
+          <div>
+            <h4>Fiambrería Don José — configuración</h4>
+            <p class="sub-h">Estos números son el método de la asesoría. Los cargan ustedes mientras dura; cuando el cliente sigue solo, se le desbloquean a él (fase 2).</p>
+            <p class="cfg-t">Comisiones por método de pago</p>
+            <div class="cfg"><span class="k">QR</span><span class="v">5%</span></div>
+            <div class="cfg"><span class="k">Débito</span><span class="v">3%</span></div>
+            <div class="cfg"><span class="k">Crédito</span><span class="v">10%</span></div>
+            <p class="cfg-t">El método</p>
+            <div class="cfg"><span class="k">Costo de mercadería</span><span class="v">70%</span></div>
+            <div class="cfg"><span class="k">Días abiertos por mes</span><span class="v">26</span></div>
+            <p class="cfg-t">Ideales del flujo de caja</p>
+            <div class="cfg"><span class="k"><i class="dot d-prov"></i>Proveedores</span><span class="v">65%</span></div>
+            <div class="cfg"><span class="k"><i class="dot d-fijo"></i>Costos fijos</span><span class="v">12%</span></div>
+            <div class="cfg"><span class="k"><i class="dot d-gasto"></i>Gastos del negocio</span><span class="v">5%</span></div>
+            <div class="cfg"><span class="k"><i class="dot d-pers"></i>Retiros personales</span><span class="v">5%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">
+        <span class="tag t-par">Está en la planilla</span>
+        <h3>Panel de la asesoría, en la web</h3>
+        <p>En vez de abrir doce planillas para ver quién se desvió, la lista viene ordenada por quién necesita atención. Es la parte que cambia cuántos clientes se pueden atender por mes. Al lado, la configuración de cada comercio: las celdas que hoy viven sueltas en la planilla, juntas en un solo lugar. El comercio usa el celular; ustedes, la compu.</p>
+        <span class="origen">Reemplaza <b>la carpeta de Drive</b> · junta las celdas J4:J8 (comisiones), O17 (costo de mercadería), K17 (ideales) y el /26 de días</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="agregados">
+    <h3>Los tres agregados de la fase 1</h3>
+    <p class="intro">Aparte de las hojas, la fase 1 suma tres cosas. Las dos primeras ya están empezadas en la planilla y quedaron sin terminar. La tercera es nueva y se puede sacar si hace falta ajustar el presupuesto.</p>
+    <dl>
+      <div>
+        <dt>El piso, conectado al mes</dt>
+        <dd>El punto de equilibrio se calcula al empezar y después nadie lo vuelve a mirar, porque vive en otro archivo. Conectarlo es una línea: vendiste tanto, tu piso era tanto.
+        <span class="est">Ya existe · hoy los dos archivos no se hablan</span></dd>
+      </div>
+      <div>
+        <dt>Las explicaciones</dt>
+        <dd>Los mismos números de siempre, con una frase al lado que dice qué significan — incluida la cuenta puente de ganancia a caja, que hoy se explica por teléfono una vez por semana.
+        <span class="est">Ya existe · es redacción, no desarrollo</span></dd>
+      </div>
+      <div>
+        <dt>Real contra ideal</dt>
+        <dd>La celda K17 de la hoja de ventas dice «IDEAL» y está vacía. Completarla es automatizar la conversación semanal de la asesoría.
+        <span class="est">Nuevo · se puede sacar del alcance</span></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="fase">
+  <div class="fase-head">
+    <span class="fase-num">Fase 2</span>
+    <h2>Que se pueda cobrar</h2>
+    <p class="nota">Gratis durante los tres meses de asesoría, con suscripción después.</p>
+  </div>
+  <div class="grid">
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Tu cuenta</span></div>
+        <div class="top"><div><strong>Seguí usándola</strong><span>Tu asesoría termina en 8 días</span></div></div>
+        <div class="card">
+          <p class="card-t">Estos tres meses ordenaste</p>
+          <div class="row"><span class="k">Ventas registradas</span><span class="v">$28.400.000</span></div>
+          <div class="row"><span class="k">Caja que recuperaste</span><span class="v ok">$1.960.000</span></div>
+          <div class="row"><span class="k">Días sin cargar</span><span class="v">3</span></div>
+        </div>
+        <div class="card">
+          <p class="card-t">Plan mensual</p>
+          <div class="row"><span class="k">Un negocio</span><span class="v">$—</span></div>
+          <div class="row"><span class="k">Cada negocio extra</span><span class="v">$—</span></div>
+          <p style="margin:9px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.5">Se debita solo con Mercado Pago. Lo cortás cuando quieras.</p>
+        </div>
+        <a class="btn solid">Activar suscripción</a>
+        <a class="btn ghost">Descargar mis datos</a>
+      </div>
+      <div class="caption">
+        <h3>Fin de la asesoría</h3>
+        <p>El momento en que hoy se pierde el cliente. Antes de pedir la tarjeta, la pantalla le recuerda lo que ganó ordenándose. El precio queda para que lo definan ustedes.</p>
+        <span class="origen">No existe hoy · es el módulo que convierte la asesoría en ingreso recurrente</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Tus números</span></div>
+        <div class="top"><div><strong>Ahora los manejás vos</strong><span>Tu asesoría terminó en noviembre</span></div></div>
+        <div class="aviso">
+          <p><b>Hace 6 meses que no revisás tus números.</b></p>
+          <p>Los precios cambiaron — capaz ellos también.</p>
+        </div>
+        <div class="card">
+          <p class="card-t">Costo de mercadería <em>editable</em></p>
+          <div class="field"><label>De cada $100 vendidos,<br>¿cuánto va a mercadería?</label><span class="amt">70%</span></div>
+          <p style="margin:0;font-size:11.5px;color:var(--ink-3);line-height:1.5">Tus últimos meses: 70 · 73 · 71. Vos decidís.</p>
+        </div>
+        <div class="card">
+          <p class="card-t">Tu piso para no perder <em>calculado en sept</em></p>
+          <div class="row"><span class="k">Punto de equilibrio</span><span class="v">$7.000.000</span></div>
+          <a class="btn ghost" style="margin-top:8px">Actualizar mis costos fijos</a>
+          <p style="margin:8px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.5">Repetís los mismos pasos de la primera sesión, con tus montos de hoy.</p>
+        </div>
+        <div class="card">
+          <div class="row"><span class="k">Comisiones por método</span><span class="pill">Editar</span></div>
+          <div class="row"><span class="k">Ideales del flujo de caja</span><span class="pill">Los define tu asesora</span></div>
+        </div>
+        <a class="btn solid">¿Los revisamos juntos? Agendá con Luisina</a>
+      </div>
+      <div class="caption">
+        <h3>Tus números, después de la asesoría</h3>
+        <p>Cuando el cliente sigue solo, la configuración se desbloquea para él. La app no sugiere nada: muestra al lado del campo lo que vienen dando sus propios meses — números que ya calcula de todos modos — y él decide, como con el Excel. El punto de equilibrio se actualiza repitiendo el paso a paso del inicio. Y si quiere ayuda, ahí mismo hay una sesión paga con Luisina.</p>
+        <span class="origen">No existe hoy · sin lógica nueva: reusa el onboarding y los números que la app ya calcula</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Panel · cobranzas</span></div>
+        <div class="top"><div><strong>¿Quién no pagó?</strong><span>47 suscripciones activas</span></div></div>
+        <div class="card">
+          <p class="card-t">Mirá estos <em>4</em></p>
+          <div class="list-row"><div><p class="name" style="margin:0">Bar Avellaneda</p><p class="meta" style="margin:0">Rechazado hace 9 días · 2 reintentos</p></div><span class="flag f-bad">Se bloquea en 1 día</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Kiosco 24hs</p><p class="meta" style="margin:0">Rechazado hace 4 días</p></div><span class="flag f-warn">Reintenta el viernes</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Despensa Norte</p><p class="meta" style="margin:0">Paga por transferencia</p></div><span class="flag f-warn">Marcar pagado</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Verdulería 9 de Julio</p><p class="meta" style="margin:0">Bloqueado hace 12 días</p></div><span class="flag f-bad">Sin acceso</span></div>
+        </div>
+        <div class="card">
+          <div class="row"><span class="k">Al día</span><span class="v ok">43</span></div>
+          <div class="row"><span class="k">Con problemas</span><span class="v warn">4</span></div>
+          <div class="row"><span class="k">Cobrado este mes</span><span class="v">$—</span></div>
+        </div>
+        <p style="margin:12px 2px 0;font-size:11.5px;color:var(--ink-3);line-height:1.5;text-align:center">Al que pagó, no lo mires. Mercado Pago se encarga.</p>
+      </div>
+      <div class="caption">
+        <h3>Cobranzas</h3>
+        <p>Mercado Pago cobra, reintenta y avisa; la app bloquea sola al que dejó de pagar. Ustedes solo ven la lista corta de los que tienen un problema, con el caso excepcional de transferencia para marcar a mano.</p>
+        <span class="origen">No existe hoy · lo definido en la reunión: la app se encarga, no ustedes</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Avisos</span></div>
+        <div class="top"><div><strong>Recordatorios</strong><span>Los prendés y apagás vos</span></div></div>
+        <div class="card">
+          <div class="row"><span class="k">Vence el alquiler en 3 días</span><span class="pill on">Sí</span></div>
+          <div class="row"><span class="k">Vence un servicio</span><span class="pill on">Sí</span></div>
+          <div class="row"><span class="k">Hace 3 días que no cargás</span><span class="pill on">Sí</span></div>
+          <div class="row"><span class="k">Resumen del mes</span><span class="pill">No</span></div>
+        </div>
+        <div class="card">
+          <p class="card-t">Así se ven</p>
+          <div style="border:1px solid var(--rule);border-radius:11px;padding:11px">
+            <p style="margin:0;font-size:12.5px;font-weight:600">El alquiler vence el lunes</p>
+            <p style="margin:3px 0 0;font-size:12px;color:var(--ink-2)">Son $480.000. Tenés $580.000 en caja.</p>
+          </div>
+        </div>
+        <p style="margin:12px 2px 0;font-size:11.5px;color:var(--ink-3);line-height:1.5;text-align:center">Nunca más de un aviso por día.</p>
+      </div>
+      <div class="caption">
+        <h3>Avisos</h3>
+        <p>Luisina pidió que la app no sea una molestia. Todos los avisos vienen de la columna «vencimiento» que ya existe en costos fijos, y todos se pueden apagar. El aviso de presupuesto llega recién con el módulo de proveedores.</p>
+        <span class="origen">Sale de <b>COSTOS FIJOS</b> · columna D, hoy sin uso</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="fase">
+  <div class="fase-head">
+    <span class="fase-num">Fase 3</span>
+    <h2>Módulos que se venden aparte</h2>
+    <p class="nota">Se lanzan de a uno, según lo que pidan los usuarios reales.</p>
+  </div>
+  <div class="grid">
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Semana del 18/8</span></div>
+        <div class="top"><div><strong>Qué le compro a cada uno</strong><span>Tenés $1.700.000 esta semana</span></div></div>
+        <div class="card">
+          <p class="card-t">Repartido <em>$1.700.000</em></p>
+          <div class="list-row"><div><p class="name" style="margin:0">Fiambres SRL</p><div class="meter mini" style="width:120px"><i style="width:100%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">$600.000</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Lácteos del Sur</p><div class="meter mini" style="width:120px"><i style="width:75%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">$450.000</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Panificados Rosario</p><div class="meter mini" style="width:120px"><i style="width:50%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">$300.000</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Bebidas del Litoral</p><div class="meter mini" style="width:120px"><i style="width:42%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">$250.000</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Varios</p><div class="meter mini" style="width:120px"><i style="width:17%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">$100.000</span></div>
+        </div>
+        <div class="aviso">
+          <p>Ya gastaste <b>$1.240.000</b>. Te quedan $460.000 hasta el domingo.</p>
+        </div>
+        <a class="btn ghost">Armar el pedido del martes</a>
+      </div>
+      <div class="caption">
+        <h3>Proveedores y presupuesto</h3>
+        <p>El problema que Luisina dijo que no pudo resolver con el Excel. Sin listas de precios ni stock: solo repartir el presupuesto semanal entre proveedores y avisar cuando se pasa.</p>
+        <span class="origen">Necesita un campo nuevo · hoy <b>PROVEEDORES</b> guarda el nombre como texto libre</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Fiado</span></div>
+        <div class="top"><div><strong>Lo que te deben</strong><span>$1.340.000 en la calle</span></div></div>
+        <div class="card">
+          <div class="list-row"><div><p class="name" style="margin:0">Marta G.</p><p class="meta" style="margin:0">Última compra hace 4 días</p></div><span class="v" style="font-family:var(--mono);font-size:13px">$68.400</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Bar de la esquina</p><p class="meta" style="margin:0">Sin pagar hace 38 días</p></div><span class="flag f-bad">$412.000</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Rubén P.</p><p class="meta" style="margin:0">Última compra hace 2 días</p></div><span class="v" style="font-family:var(--mono);font-size:13px">$31.200</span></div>
+          <div class="list-row"><div><p class="name" style="margin:0">Otros 14 clientes</p><p class="meta" style="margin:0">Al día</p></div><span class="v" style="font-family:var(--mono);font-size:13px">$828.400</span></div>
+        </div>
+        <div class="aviso">
+          <p><b>Por esto no te cierra la caja.</b></p>
+          <p>Tenés $580.000 disponibles y $1.340.000 prestados sin cobrar.</p>
+        </div>
+        <a class="btn ghost">Ver quién se atrasó</a>
+      </div>
+      <div class="caption">
+        <h3>Cuentas corrientes</h3>
+        <p>Solo para los comercios que fían. Luisina lo marcó como una forma distinta de administrar, así que se activa por negocio y no ensucia la app de quien no lo necesita.</p>
+        <span class="origen">No está en el Excel · se lleva en un cuaderno aparte</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="phone">
+        <div class="bar"><span>9:41</span><span>Tu equipo</span></div>
+        <div class="top"><div><strong>Quién puede hacer qué</strong><span>Fiambrería Don José</span></div></div>
+        <div class="card">
+          <p class="card-t">Marcos <em>empleado</em></p>
+          <div class="row"><span class="k">Cargar ventas del día</span><span class="pill on">Sí</span></div>
+          <div class="row"><span class="k">Cargar pagos a proveedores</span><span class="pill on">Sí</span></div>
+          <div class="row"><span class="k">Ver la caja y las ganancias</span><span class="pill">No</span></div>
+          <div class="row"><span class="k">Ver tus retiros</span><span class="pill">No</span></div>
+        </div>
+        <div class="card">
+          <p class="card-t">Vos <em>dueño</em></p>
+          <p style="margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.55">Ves todo: el día, la semana, el mes. Estés en el negocio, en tu casa o de vacaciones.</p>
+        </div>
+        <a class="btn ghost">Invitar a alguien</a>
+      </div>
+      <div class="caption">
+        <h3>Empleados</h3>
+        <p>Muchos comercios tienen empleados que manejan pedidos y pagos. El empleado carga; los números del negocio los ve solo el dueño. Se activa únicamente donde hace falta.</p>
+        <span class="origen">No está en el Excel · pedido de la reunión: roles con permisos distintos</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="tail">
+  <h2>Lo que falta definir para cerrar esto</h2>
+  <ol>
+    <li><b>Los porcentajes ideales del flujo de caja.</b> En las pantallas pusimos 65% proveedores, 12% costos fijos, 5% gastos y 5% personales, pero son inventados. Los verdaderos son el método de la asesoría y hacen falta para que la comparación funcione.</li>
+    <li><b>Si los ideales son iguales para todos</b> o cambian según el rubro y el margen de cada negocio.</li>
+    <li><b>El precio de la suscripción</b>, para poder calcular en cuántos meses la app se paga sola.</li>
+    <li><b>Si al terminar la asesoría</b> ustedes siguen viendo los datos del comercio, o solo los ve el dueño.</li>
+    <li><b>Si hay clientes de Chile o Uruguay entrando pronto.</b> La moneda por comercio queda prevista en la base de datos desde el día uno; la pantalla llega después, pero conviene saberlo ahora.</li>
+  </ol>
+
+  <div class="cambios">
+    <h3>Cambios de la v3</h3>
+    <ul>
+      <li><b>Nueva pantalla en fase 2: "Tus números, después de la asesoría".</b> Resuelve el hueco de la autogestión sin lógica inteligente: config desbloqueada para el cliente, recordatorio por tiempo, y los valores reales de sus meses mostrados al lado del campo editable — sin sugerencias, él decide. Los ideales quedan bloqueados (son el método de la asesora). Incluye el upsell de sesión de revisión con Luisina.</li>
+      <li>Aclarado en el panel web que la config es de ustedes <b>durante la asesoría</b>, y del cliente después.</li>
+    </ul>
+  </div>
+
+  <div class="cambios">
+    <h3>Cambios de la v2</h3>
+    <ul>
+      <li><b>Corregida la explicación ganancia/caja.</b> La v1 atribuía toda la diferencia a "mercadería en la góndola"; con los números del ejemplo, el driver principal eran los retiros del dueño. Ahora la pantalla muestra la cuenta puente completa: ganancia − mercadería sin vender − retiros + caja inicial = lo que hay hoy.</li>
+      <li><b>Sumadas cuatro pantallas que faltaban del alcance:</b> lista de precios (con la lección marca vs. margen), proyección, configuración por comercio y cobranzas.</li>
+      <li><b>Sumado el módulo de empleados</b> a la fase 3.</li>
+      <li><b>El panel de la asesoría pasó a formato web</b> — el comercio usa el celular, ustedes la compu.</li>
+      <li><b>Orden de fases consistente:</b> el aviso de presupuesto semanal ya no aparece en pantallas de fase 1; llega con el módulo de proveedores.</li>
+      <li><b>Copy más preciso:</b> "Arrancaste con $500.000 · entró $9.680.000" en vez de mezclar la caja inicial con las ventas; el margen del diagnóstico sale del producto de referencia, como en la planilla, no de la lista de precios.</li>
+    </ul>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
