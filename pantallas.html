@@ -145,6 +145,22 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
 .cfg-t:first-child{margin-top:0}
 @media (max-width:760px){.browser-body{grid-template-columns:1fr}.browser-body>div+div{border-left:0;border-top:1px solid var(--rule)}}
 
+.chart{display:flex;align-items:flex-end;gap:16px;height:130px;margin:14px 4px 0;border-bottom:1px solid var(--rule)}
+.chart .cb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;height:100%}
+.chart .cb b{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink)}
+.chart .cb i{display:block;width:100%;max-width:44px;border-radius:5px 5px 0 0}
+.chart-lbls{display:flex;gap:16px;margin:6px 4px 0}
+.chart-lbls span{flex:1;text-align:center;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);line-height:1.3}
+.donut-wrap{display:flex;align-items:center;gap:20px;margin:14px 0 6px;flex-wrap:wrap}
+.donut{width:128px;height:128px;border-radius:50%;position:relative;flex-shrink:0;background:conic-gradient(var(--prov) 0 141deg, var(--caja) 141deg 235deg, var(--fijo) 235deg 305deg, var(--personal) 305deg 360deg)}
+.donut::after{content:"";position:absolute;inset:34px;background:var(--paper);border-radius:50%}
+.donut b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;font-family:var(--mono);font-size:16px;color:var(--ink);font-weight:600}
+.donut b small{font-size:8.5px;color:var(--ink-3);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+.dleg{list-style:none;margin:0;padding:0;flex:1;min-width:150px}
+.dleg li{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--ink-2);padding:4px 0;border-top:1px solid var(--rule)}
+.dleg li:first-child{border-top:0}
+.dleg li .v{font-family:var(--mono);font-size:11.5px;color:var(--ink)}
+.metodo-strip{border-top:1px solid var(--rule);padding:12px 22px;font-size:12.5px;color:#6B4A00;background:var(--alerta-bg)}
 .tail{margin-top:72px;border-top:1px solid var(--rule);padding-top:24px;color:var(--ink-2);font-size:14px}
 .tail h2{font-size:18px;font-weight:600;color:var(--ink);margin:0 0 10px}
 .tail ol{margin:0;padding-left:20px}
@@ -427,31 +443,35 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
         <div class="browser-bar"><i></i><i></i><i></i><span>panel de Luisina y Fer — estadísticas</span></div>
         <div class="browser-body">
           <div>
-            <h4>Por rubro</h4>
-            <p class="sub-h">Con lo que la app recolecta de todos los comercios — para sus decisiones y su contenido.</p>
-            <p class="cfg-t">Margen promedio</p>
-            <div class="list-row"><div><p class="name" style="margin:0">Verdulerías <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">· 9 locales</span></p><div class="meter mini" style="width:140px"><i style="width:100%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">35%</span></div>
-            <div class="list-row"><div><p class="name" style="margin:0">Fiambrerías <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">· 12 locales</span></p><div class="meter mini" style="width:140px"><i style="width:86%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">30%</span></div>
-            <div class="list-row"><div><p class="name" style="margin:0">Pollerías <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">· 7 locales</span></p><div class="meter mini" style="width:140px"><i style="width:77%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">27%</span></div>
-            <div class="list-row"><div><p class="name" style="margin:0">Almacenes <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">· 18 locales</span></p><div class="meter mini" style="width:140px"><i style="width:69%"></i></div></div><span class="v" style="font-family:var(--mono);font-size:12.5px">24%</span></div>
+            <h4>Margen promedio por rubro</h4>
+            <p class="sub-h">Con lo que la app recolecta de todos los comercios.</p>
+            <div class="chart">
+              <div class="cb"><b>35%</b><i style="height:100%;background:var(--fijo)"></i></div>
+              <div class="cb"><b>30%</b><i style="height:86%;background:var(--caja)"></i></div>
+              <div class="cb"><b>27%</b><i style="height:77%;background:var(--personal)"></i></div>
+              <div class="cb"><b>24%</b><i style="height:69%;background:var(--prov)"></i></div>
+            </div>
+            <div class="chart-lbls"><span>Verdulerías</span><span>Fiambrerías</span><span>Pollerías</span><span>Almacenes</span></div>
             <p class="cfg-t">Costos fijos promedio por local</p>
             <div class="cfg"><span class="k">Almacenes</span><span class="v">$1.350.000</span></div>
             <div class="cfg"><span class="k">Fiambrerías</span><span class="v">$1.180.000</span></div>
-            <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.5">«¿Cuánto gana una fiambrería?» — el dato para el próximo video, con números reales.</p>
           </div>
           <div>
-            <h4>El método — a confirmar con Luisina</h4>
-            <p class="sub-h">¿Estos números los cargan ustedes por comercio, o cada comercio el suyo? Queda para definir juntos.</p>
-            <p class="cfg-t">Costo de mercadería y días</p>
-            <div class="cfg"><span class="k">Costo de mercadería</span><span class="v">70%</span></div>
-            <div class="cfg"><span class="k">Días abiertos por mes</span><span class="v">26</span></div>
-            <p class="cfg-t">Ideales del flujo de caja</p>
-            <div class="cfg"><span class="k"><i class="dot d-prov"></i>Proveedores</span><span class="v">65%</span></div>
-            <div class="cfg"><span class="k"><i class="dot d-fijo"></i>Costos fijos</span><span class="v">12%</span></div>
-            <div class="cfg"><span class="k"><i class="dot d-gasto"></i>Gastos del negocio</span><span class="v">5%</span></div>
-            <div class="cfg"><span class="k"><i class="dot d-pers"></i>Retiros personales</span><span class="v">5%</span></div>
+            <h4>Locales por rubro</h4>
+            <p class="sub-h">Activos y terminados, todo lo que pasó por la asesoría.</p>
+            <div class="donut-wrap">
+              <div class="donut"><b>46<small>locales</small></b></div>
+              <ul class="dleg">
+                <li><span><i class="dot d-prov"></i>Almacenes</span><span class="v">18</span></li>
+                <li><span><i class="dot" style="background:var(--caja)"></i>Fiambrerías</span><span class="v">12</span></li>
+                <li><span><i class="dot d-fijo"></i>Verdulerías</span><span class="v">9</span></li>
+                <li><span><i class="dot d-pers"></i>Pollerías</span><span class="v">7</span></li>
+              </ul>
+            </div>
+            <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.5">«¿Cuánto gana una fiambrería?» — el dato para el próximo video, con números reales.</p>
           </div>
         </div>
+        <div class="metodo-strip"><b>El método, a confirmar con Luisina:</b> costo de mercadería (70%), días abiertos (26) e ideales del flujo — ¿los cargan ustedes por comercio, o cada comercio el suyo?</div>
       </div>
       <div class="caption">
         <span class="tag t-add">Nuevo</span>
@@ -703,7 +723,7 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
     <ul>
       <li><b>Comisiones fuera del panel admin.</b> Las carga cada comercio en su app (paso 2 del diagnóstico y editables después) — son su realidad bancaria, no parte del método.</li>
       <li><b>Gestión de usuarios en el panel:</b> alta por Luisina/Fer o auto-registro desde la app, y en ambos casos <b>nadie usa la app sin el OK del admin</b>. Estados: esperando OK, activo, pausado, bloqueado. Eliminar solo a pedido del comercio.</li>
-      <li><b>Nuevo panel de estadísticas:</b> márgenes y costos fijos promedio por rubro, cantidad de locales — con los datos que la app recolecta. La materia prima del contenido de Luisina.</li>
+      <li><b>Nuevo panel de estadísticas con gráficos:</b> barras de margen promedio por rubro, torta de locales, costos fijos promedio — con los datos que la app recolecta. La materia prima del contenido de Luisina.</li>
       <li><b>Método e ideales marcados "a confirmar con Luisina":</b> falta definir si los carga el admin o cada comercio.</li>
     </ul>
   </div>
