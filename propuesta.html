@@ -76,8 +76,9 @@
 
   .opciones{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
   @media(max-width:700px){.opciones{grid-template-columns:1fr}}
-  .op{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;position:relative}
-  .op.rec{border:2px solid var(--caja)}
+  .op{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;position:relative;cursor:pointer;transition:border-color .15s, box-shadow .15s}
+  .op.sel{border-color:var(--caja);box-shadow:0 0 0 1.5px var(--caja)}
+  .op:focus-visible{outline:2px solid var(--caja);outline-offset:3px}
   .op .badge{position:absolute;top:-11px;left:18px;background:var(--caja);color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 10px;border-radius:20px}
   .op h3{margin:0 0 2px;font-size:16px}
   .op .sub{font-family:var(--mono);font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
@@ -246,65 +247,7 @@
   </section>
 
   <section>
-    <h2><span class="n">03</span>Las opciones</h2>
-    <p style="margin-bottom:18px">El desarrollo es el mismo en todas. Lo que cambia es <b>quién se ocupa de que siga andando</b> y si va a las tiendas de aplicaciones. Las opciones autogestionadas tienen un precio único mayor porque incluyen la <b>entrega completa</b>: código fuente, cuentas, documentación y capacitación para operarla sin nosotros.</p>
-
-    <div class="opciones">
-      <div class="op rec">
-        <span class="badge">Recomendada</span>
-        <h3>App web, administrada</h3>
-        <span class="sub">Ustedes asesoran, nosotros la mantenemos</span>
-        <p class="precio">USD 2.000 <small>+ 100/mes</small></p>
-        <ul>
-          <li>Todos los servicios incluidos (base de datos, dominio, hosting) — no pagan nada más</li>
-          <li>Copias de seguridad diarias, actualizaciones, corrección de errores</li>
-          <li>Soporte directo a ustedes dos, respuesta en 48–72 hs hábiles</li>
-          <li>El mensual arranca cuando la app entra en uso real</li>
-        </ul>
-        <p class="nota">El soporte a los comerciantes lo dan ustedes, como hoy — nosotros somos su soporte.</p>
-      </div>
-
-      <div class="op">
-        <h3>App web, autogestionada</h3>
-        <span class="sub">Se las entregamos completa y la operan ustedes</span>
-        <p class="precio">USD 3.000 <small>único pago</small></p>
-        <ul>
-          <li>Entrega total: código, cuentas, documentación y capacitación de manejo</li>
-          <li>Los servicios los pagan directo: ~USD 25–30/mes + dominio anual</li>
-          <li>Sin costo mensual nuestro</li>
-        </ul>
-        <p class="nota">Requiere alguien que se ocupe de lo técnico (copias de seguridad, servicios, errores). Pueden pasarse a la administrada cuando quieran.</p>
-      </div>
-
-      <div class="op">
-        <h3>App en las tiendas, administrada</h3>
-        <span class="sub">Play Store y App Store, mantenida por nosotros</span>
-        <p class="precio">USD 2.500 <small>+ 150/mes</small></p>
-        <ul>
-          <li>Todo lo de la web administrada</li>
-          <li>Publicada en Google Play y App Store, descargable como cualquier app</li>
-          <li>Las cuentas de las tiendas y sus costos van incluidos en el mensual</li>
-          <li>Una actualización de tiendas por trimestre incluida</li>
-        </ul>
-      </div>
-
-      <div class="op">
-        <h3>App en las tiendas, autogestionada</h3>
-        <span class="sub">Publicada y entregada, la operan ustedes</span>
-        <p class="precio">USD 3.500 <small>único pago</small></p>
-        <ul>
-          <li>Todo lo de la web autogestionada</li>
-          <li>Publicada en sus propias cuentas de tienda</li>
-          <li>Costos de tiendas a su cargo: USD 25 una vez (Google) + USD 99/año (Apple)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="aviso"><p><b>¿Por qué recomendamos la web administrada?</b> Porque a sus clientes se la instalan ustedes en la primera sesión (no necesitan las tiendas para eso), porque no tienen que ocuparse de nada técnico, y porque es la opción más barata de arrancar. Pasar a las tiendas después es un agregado, no un rehacer.</p></div>
-  </section>
-
-  <section>
-    <h2><span class="n">04</span>Plazos</h2>
+    <h2><span class="n">03</span>Plazos</h2>
     <div class="timeline">
       <div class="t-row"><span class="cuando">Fin sept</span><span class="que"><b>Primera entrega, para probar:</b> carga de ventas y gastos andando en el celular</span></div>
       <div class="t-row"><span class="cuando">Med oct</span><span class="que"><b>Segunda entrega:</b> flujo de caja, rentabilidad, punto de equilibrio, lista de precios, proyección — la app calcula todo lo que calcula el Excel</span></div>
@@ -314,21 +257,7 @@
   </section>
 
   <section>
-    <h2><span class="n">05</span>Forma de pago</h2>
-    <div class="pagos">
-      <div class="pago"><div class="pct">40%</div><div class="cuando">al iniciar<br><span class="mono">USD 800</span></div></div>
-      <div class="pago"><div class="pct">40%</div><div class="cuando">en la primera entrega<br><span class="mono">USD 800</span></div></div>
-      <div class="pago"><div class="pct">20%</div><div class="cuando">al finalizar<br><span class="mono">USD 400</span></div></div>
-    </div>
-    <ul class="plain" style="margin-top:16px;max-width:66ch">
-      <li>En dólares, por transferencia bancaria</li>
-      <li><b>"Finalizado" significa algo concreto:</b> la app da los mismos números que tu Excel con los mismos datos, y todas las pantallas acordadas funcionan. Ni antes ni después.</li>
-      <li><b>Garantía de 60 días</b> desde la entrega final: cualquier error de lo entregado se corrige sin cargo, en todas las opciones</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2><span class="n">06</span>Qué necesitamos de ustedes</h2>
+    <h2><span class="n">04</span>Qué necesitamos de ustedes</h2>
     <ul class="plain" style="max-width:66ch">
       <li><b>Un correo electrónico de ustedes</b> para crear todas las cuentas a su nombre (los servicios, el dominio). Todo queda de ustedes desde el primer día, con nosotros como administradores técnicos.</li>
       <li>Los <b>porcentajes ideales</b> del flujo de caja que usás en la asesoría, y un Excel de un mes real de algún cliente (anonimizado si querés)</li>
@@ -338,7 +267,7 @@
   </section>
 
   <section>
-    <h2><span class="n">07</span>Condiciones generales</h2>
+    <h2><span class="n">05</span>Condiciones generales</h2>
     <ul class="plain" style="max-width:66ch">
       <li><b>Los datos son de ustedes y de sus comercios.</b> Nunca los usamos para otra cosa. Al dar de baja un comercio, sus datos se conservan (por si vuelve) y se borran si él lo pide.</li>
       <li><b>Licencia de uso completa y permanente</b> del software para su negocio. En las opciones autogestionadas se entrega además el código fuente y toda la documentación.</li>
@@ -349,7 +278,7 @@
   </section>
 
   <section class="mk">
-    <h2><span class="n">08</span>Así se va a ver</h2>
+    <h2><span class="n">06</span>Así se va a ver</h2>
     <p style="max-width:66ch">Propuesta de pantallas para revisar juntos — no es el diseño final, todo se puede mover. Cada pantalla dice de qué parte de tu planilla sale, y los colores son los de tu Excel: azul proveedores, amarillo costos fijos, rojo gastos, naranja personales, verde caja.</p>
 
     <div class="grid">
@@ -597,6 +526,105 @@
       </div>
     </div>
   </section>
+
+  <section>
+    <h2><span class="n">07</span>Las opciones</h2>
+    <p style="margin-bottom:8px">El desarrollo es el mismo en todas. Lo que cambia es <b>quién se ocupa de que siga andando</b> y si va a las tiendas de aplicaciones. Las opciones autogestionadas tienen un precio único mayor porque incluyen la <b>entrega completa</b>: código fuente, cuentas, documentación y capacitación para operarla sin nosotros.</p>
+    <p style="margin-bottom:18px;font-size:14px;color:var(--caja)"><b>Toquen la opción que prefieran</b> — la forma de pago de abajo se ajusta sola.</p>
+
+    <div class="opciones">
+      <div class="op rec sel" role="button" tabindex="0" data-base="2000" data-mensual="100" data-name="App web, administrada">
+        <span class="badge">Recomendada</span>
+        <h3>App web, administrada</h3>
+        <span class="sub">Ustedes asesoran, nosotros la mantenemos</span>
+        <p class="precio">USD 2.000 <small>+ 100/mes</small></p>
+        <ul>
+          <li>Todos los servicios incluidos (base de datos, dominio, hosting) — no pagan nada más</li>
+          <li>Copias de seguridad diarias, actualizaciones, corrección de errores</li>
+          <li>Soporte directo a ustedes dos, respuesta en 48–72 hs hábiles</li>
+          <li>El mensual arranca cuando la app entra en uso real</li>
+        </ul>
+        <p class="nota">El soporte a los comerciantes lo dan ustedes, como hoy — nosotros somos su soporte.</p>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="3000" data-mensual="0" data-name="App web, autogestionada">
+        <h3>App web, autogestionada</h3>
+        <span class="sub">Se las entregamos completa y la operan ustedes</span>
+        <p class="precio">USD 3.000 <small>único pago</small></p>
+        <ul>
+          <li>Entrega total: código, cuentas, documentación y capacitación de manejo</li>
+          <li>Los servicios los pagan directo: ~USD 25–30/mes + dominio anual</li>
+          <li>Sin costo mensual nuestro</li>
+        </ul>
+        <p class="nota">Requiere alguien que se ocupe de lo técnico (copias de seguridad, servicios, errores). Pueden pasarse a la administrada cuando quieran.</p>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="2500" data-mensual="150" data-name="App en las tiendas, administrada">
+        <h3>App en las tiendas, administrada</h3>
+        <span class="sub">Play Store y App Store, mantenida por nosotros</span>
+        <p class="precio">USD 2.500 <small>+ 150/mes</small></p>
+        <ul>
+          <li>Todo lo de la web administrada</li>
+          <li>Publicada en Google Play y App Store, descargable como cualquier app</li>
+          <li>Las cuentas de las tiendas y sus costos van incluidos en el mensual</li>
+          <li>Una actualización de tiendas por trimestre incluida</li>
+        </ul>
+      </div>
+
+      <div class="op" role="button" tabindex="0" data-base="3500" data-mensual="0" data-name="App en las tiendas, autogestionada">
+        <h3>App en las tiendas, autogestionada</h3>
+        <span class="sub">Publicada y entregada, la operan ustedes</span>
+        <p class="precio">USD 3.500 <small>único pago</small></p>
+        <ul>
+          <li>Todo lo de la web autogestionada</li>
+          <li>Publicada en sus propias cuentas de tienda</li>
+          <li>Costos de tiendas a su cargo: USD 25 una vez (Google) + USD 99/año (Apple)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="aviso"><p><b>¿Por qué recomendamos la web administrada?</b> Porque a sus clientes se la instalan ustedes en la primera sesión (no necesitan las tiendas para eso), porque no tienen que ocuparse de nada técnico, y porque es la opción más barata de arrancar. Pasar a las tiendas después es un agregado, no un rehacer.</p></div>
+  </section>
+
+  <section>
+    <h2><span class="n">08</span>Forma de pago</h2>
+    <p style="margin-bottom:14px">Opción elegida: <b id="pago-name" style="color:var(--ink)">App web, administrada</b> · <span class="mono" id="pago-detalle">USD 2.000 + USD 100 por mes</span></p>
+    <div class="pagos">
+      <div class="pago"><div class="pct">40%</div><div class="cuando">al iniciar<br><span class="mono" id="pg1">USD 800</span></div></div>
+      <div class="pago"><div class="pct">40%</div><div class="cuando">en la primera entrega<br><span class="mono" id="pg2">USD 800</span></div></div>
+      <div class="pago"><div class="pct">20%</div><div class="cuando">al finalizar<br><span class="mono" id="pg3">USD 400</span></div></div>
+    </div>
+    <ul class="plain" style="margin-top:16px;max-width:66ch">
+      <li>En dólares, por transferencia bancaria</li>
+      <li><b>"Finalizado" significa algo concreto:</b> la app da los mismos números que tu Excel con los mismos datos, y todas las pantallas acordadas funcionan. Ni antes ni después.</li>
+      <li><b>Garantía de 60 días</b> desde la entrega final: cualquier error de lo entregado se corrige sin cargo, en todas las opciones</li>
+    </ul>
+  </section>
+
+  <script>
+  (function(){
+    var ops = document.querySelectorAll('.op');
+    if (!ops.length) return;
+    function usd(n){ return 'USD ' + n.toLocaleString('es-AR'); }
+    function apply(el){
+      ops.forEach(function(o){ o.classList.remove('sel'); });
+      el.classList.add('sel');
+      var base = parseInt(el.dataset.base, 10);
+      var mensual = parseInt(el.dataset.mensual, 10);
+      document.getElementById('pg1').textContent = usd(base * 0.4);
+      document.getElementById('pg2').textContent = usd(base * 0.4);
+      document.getElementById('pg3').textContent = usd(base * 0.2);
+      document.getElementById('pago-name').textContent = el.dataset.name;
+      document.getElementById('pago-detalle').textContent = usd(base) + (mensual ? ' + ' + usd(mensual) + ' por mes' : ' · pago único, sin mensual');
+    }
+    ops.forEach(function(o){
+      o.addEventListener('click', function(){ apply(o); });
+      o.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apply(o); }
+      });
+    });
+  })();
+  </script>
 
   <footer>
     <span>José Brizuela · Agustín Soleti</span>
