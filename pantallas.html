@@ -763,5 +763,31 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
   });
 })();
 </script>
+<script>
+(function(){
+  var d = new Date();
+  var dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var hora = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  var fechaLarga = dias[d.getDay()] + ' ' + d.getDate() + ' de ' + meses[d.getMonth()];
+  var mesCap = meses[d.getMonth()][0].toUpperCase() + meses[d.getMonth()].slice(1);
+  var lunes = new Date(d); lunes.setDate(d.getDate() - ((d.getDay()+6)%7));
+  var pares = [
+    ['Jueves 21 de agosto', fechaLarga],
+    ['Cerrado al 21 de agosto', 'Cerrado al ' + d.getDate() + ' de ' + meses[d.getMonth()]],
+    ['Agosto · día 21', mesCap + ' · día ' + d.getDate()],
+    ['Semana del 18/8', 'Semana del ' + lunes.getDate() + '/' + (lunes.getMonth()+1)],
+    ['9:41', hora]
+  ];
+  var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  var n;
+  while ((n = w.nextNode())) {
+    var t = n.nodeValue, orig = t;
+    if (t.trim() === 'Agosto') t = t.replace('Agosto', mesCap);
+    pares.forEach(function(p){ t = t.split(p[0]).join(p[1]); });
+    if (t !== orig) n.nodeValue = t;
+  }
+})();
+</script>
 </body>
 </html>
